@@ -19,9 +19,9 @@ public class Bus {
     public Bus(String numberPlate, int numberOfSeat) { // parametre de kullandıgımız değişken isimler ile fieald isimleri aynı olmak zorunda değil ancak best practice olan aynı olmasıdır.
         this.numberPlate = numberPlate; // 34 TPE 789
         this.numberOfSeat = numberOfSeat; // 33
-        for (int i = 1; i <= numberOfSeat; i++) {
+        for (int i = 1; i <= this.numberOfSeat; i++) {
             this.seats.add(String.valueOf(i)); // i'nin degerini String'e donusur.
-            this.seats.add(i + ""); // i'nin degerini String'e donusur.
+            // this.seats.add(i + ""); // i'nin degerini String'e donusur.
         }
     }
 

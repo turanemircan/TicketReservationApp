@@ -38,7 +38,7 @@ public class TicketReservationApp {
     private static void start() {
 
         // 1- Bilet ve otobüs objelerini oluşturalım.
-        Bus bus = new Bus("34 TPE 789", 33);
+        Bus bus = new Bus("34 EMR 021", 33);
 
         Ticket ticket;
 
@@ -77,7 +77,15 @@ public class TicketReservationApp {
 
             // Girilen degerler gecerli mi?
             if (km > 0 && age > 0 && (type == 1 || type == 2) && !isReserved) {
-                // todo: Bileti hazırla... devamı gelecek
+                // bileti hazırla
+                ticket = new Ticket(km, type, seat, bus);
+                ticket.setPrice(age);
+
+                // rezerve edilen koltuğu listeden kaldıralım
+                ticket.getBus().getSeats().remove(seat);
+
+                // bileti yazdıralım
+                ticket.printTicket(name);
             } else {
                 if (isReserved) {
                     System.out.println("Secilen koltuk mevcut degil veya rezerve edilmistir!");
@@ -85,7 +93,7 @@ public class TicketReservationApp {
                     System.out.println("Sayin " + name + "hatali veri girdiniz!");
                 }
             }
-            System.out.print("Yeni islem icin bir sayi giriniz, CIKIS icin 0 giriniz =");
+            System.out.print("Yeni islem icin bir sayi giriniz, CIKIS icin 0 giriniz = ");
             select = scanner.nextInt();
 
             scanner.nextLine();
